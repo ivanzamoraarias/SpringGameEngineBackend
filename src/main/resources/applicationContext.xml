@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="playerRepository" class="com.engine.repository.HibernatePlayerRepositoryImpl"/>
+	<bean name="playerService" class="com.engine.service.PlayerServiceImpl">
+		<property name="playerRepository" ref="playerRepository"></property>		
+	</bean>
+	<!--  <bean name="playerServiceWithParameters" class="com.engine.service.PLayerServiceWithParametersImpl">
+		<constructor-arg index="0" ref="playerRepository"></constructor-arg>		
+	</bean>-->
+	<bean name="playerServiceWithParameters" class="com.engine.service.PLayerServiceWithParametersImpl" autowire="byType">	
+	</bean>
+</beans>
